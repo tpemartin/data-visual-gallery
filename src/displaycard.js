@@ -25,7 +25,9 @@ export function Thumbnail(props){
         
     </div>
 }
+//<DisplayImg number={1}  href={"https://getbootstrap.com/docs/5.2/forms/form-control/"} imgSrc={"https://cdn4.buysellads.net/uu/1/3386/1525189943-38523.png"}/>
 export function DisplayImg(props){
+    // <DisplayImg number href imgSrc/>
     return  (
         <div className="text-center display-container">
             <h1><span className="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">
