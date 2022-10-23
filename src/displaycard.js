@@ -18,7 +18,7 @@ export function Img(props){
 export function Thumbnail(props){
     const chosen = props.chosen?"chosen":""
     const opacity = props.chosen?"":"opacity-25"
-    return <div className={`thumbnail ${chosen}`} style={{backgroundImage: `url(${props.imgSrc})`}}>
+    return <div className={`thumbnail ${chosen}`} style={{backgroundImage: `url(${props.imgSrc})`}} onClick={props.clickHandler}>
         <span className={`position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger ${opacity}`}>
             {props.number}
         </span>
@@ -31,7 +31,7 @@ export function DisplayImg(props){
             <h1><span className="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">
                 {props.number}
             </span></h1>
-            <a href={props.href}>
+            <a href={props.github}>
                 <img className="position-absolute top-0 end-0 me-5" src={github} width={24} />
             </a>
             <div className="display-img" style={{ backgroundImage: `url(${props.imgSrc})` }} />

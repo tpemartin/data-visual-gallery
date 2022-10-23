@@ -2,35 +2,61 @@ import logo from './logo.svg';
 import './App.css';
 import {Card, Img, Thumbnail, DisplayImg} from './displaycard.js';
 import { Navbar } from './navbar';
+import  useFetch from 'react-fetch-hook';
+import config from "./config.json";
+import { useEffect, useState } from 'react';
+import $ from 'jquery'
+import SideNav from './sidenav';
 
-let displaycard =  <Card imgSrc="https://uploads.toptal.io/blog/image/126377/toptal-blog-image-1528911079271-9ae4277f52fcee6744566cc0d46878ba.png"/>
-let displayImg = <div className="text-center">
-  <img src="https://uploads.toptal.io/blog/image/126377/toptal-blog-image-1528911079271-9ae4277f52fcee6744566cc0d46878ba.png" className="rounded display-img" alt="..." />
-</div>
-let footerSlide =  <div className="thumbnail-footer position-fixed start-0 bottom-0">
-      
-<Thumbnail number={1} chosen
-imgSrc={"https://uploads.toptal.io/blog/image/126377/toptal-blog-image-1528911079271-9ae4277f52fcee6744566cc0d46878ba.png"}/>
- <Thumbnail number={2} 
-imgSrc={"https://uploads.toptal.io/blog/image/126377/toptal-blog-image-1528911079271-9ae4277f52fcee6744566cc0d46878ba.png"}/>
-<Thumbnail number={3} 
-imgSrc={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt9xhL5kmEHyvKmQO_RYE8eMd8zMGnq8_QSdxH9Np7DyAqsspvZAX53PLyFWUJsTT5O1E&usqp=CAU"}/>
- <Thumbnail number={4} 
-imgSrc={"https://uploads.toptal.io/blog/image/126377/toptal-blog-image-1528911079271-9ae4277f52fcee6744566cc0d46878ba.png"}/>
-<Thumbnail number={5} 
-imgSrc={"https://uploads.toptal.io/blog/image/126377/toptal-blog-image-1528911079271-9ae4277f52fcee6744566cc0d46878ba.png"}/>
-
-</div>
-
-function App() {
+export default function App() {
   return (
     <div className="App">
       <Navbar/>
-      <DisplayImg number ={1}imgSrc="https://uploads.toptal.io/blog/image/126377/toptal-blog-image-1528911079271-9ae4277f52fcee6744566cc0d46878ba.png"/>
-      {footerSlide}
-         
+      <SideNav/>
+      <FetchData/>
     </div>
   );
 }
+function FetchData(){
+  var {isLoading, data}=useFetch(config.appScript)
+  if(isLoading){
+    return <div className="text-light">Loading...</div>
+  } else {
+    data.splice(0,1)
+    return <Gallery data={data}/>
+  }
+}
 
-export default App;
+function Gallery({data}){
+
+  var [activeThumbnail, setActiveThumbnail] = useState(0)
+  
+  function handlerThumbnailClick(ev){
+    //console.log(ev)
+    const newActiveThumbnail = + ev.target.childNodes[0].innerText -1
+    //console.log(newActiveThumbnail)
+    // const thumbnailsCollection = document.getElementsByClassName("thumbnail")
+    // thumbnailsCollection[activeThumbnail].classList.remove("chosen")
+    // thumbnailsCollection[newActiveThumbnail].classList.add("chosen")
+    setActiveThumbnail(newActiveThumbnail)
+    //const thumbnails = document.getElementsByClassName("thumbnail")
+    //console.log(activeThumbnail)
+  }       
+
+  var thumbnails = data.map((e, i) => {
+    return (i === activeThumbnail) ? (
+      <Thumbnail number={i + 1} chosen imgSrc={e.resizeGraphImgSrc} key={i}
+        clickHandler={handlerThumbnailClick} />
+    ) : (
+      <Thumbnail number={i + 1} imgSrc={e.resizeGraphImgSrc} key={i} clickHandler={handlerThumbnailClick} />
+    )
+  })
+
+  return <>
+    <DisplayImg number={activeThumbnail + 1} imgSrc={data[activeThumbnail].resizeGraphImgSrc} github={data[activeThumbnail].codePath} />
+    <div className="thumbnail-footer position-fixed start-0 bottom-0">
+      {thumbnails}
+    </div>
+  </>
+
+}

@@ -1,6 +1,7 @@
+import SideNav, { SideNavButton } from "./sidenav"
 
-
-export function Navbar(props){
+export function Navbar({formUrl}){
+  
     return <nav className="navbar navbar-expand-lg bg-light">
   <div className="container-fluid">
     <a className="navbar-brand" href="#">經濟資料視覺化展示@NTPU.ECON</a>
@@ -8,7 +9,7 @@ export function Navbar(props){
       <span className="navbar-toggler-icon" />
     </button> */}
  
-    <Sidebar/>
+    <SideNavButton/>
   </div>
 </nav>
 
