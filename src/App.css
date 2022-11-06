@@ -42,6 +42,16 @@ div#offcanvasRight {
 .navbar {
   margin-bottom: 30px;
 }
+.navbar-brand {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+select.form-select {
+  width: 250px;
+}
 .text-center {
   position: relative;
 }

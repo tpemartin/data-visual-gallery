@@ -5,30 +5,52 @@ import { Navbar } from './navbar';
 import  useFetch from 'react-fetch-hook';
 import config from "./config.json";
 import { useEffect, useState } from 'react';
-import $ from 'jquery'
 import SideNav from './sidenav';
 
 export default function App() {
+  var [homeworkSelect, setHomeworkSelect] = useState("")
+
+  useEffect(()=>{
+    const selectmenu = document.getElementById("homeworkMenu")
+    selectmenu.onchange=()=>{
+      setHomeworkSelect(selectmenu.value)
+    }
+
+  })
   return (
     <div className="App">
       <Navbar/>
       <SideNav/>
-      <FetchData/>
+      <Content homeworkId={homeworkSelect}/>
     </div>
   );
 }
-function FetchData(){
-  var {isLoading, data}=useFetch(config.appScript)
+
+function Content({homeworkId}){
+  if(homeworkId===""){
+    return <></>
+  } else {
+    return <FetchData homeworkId={homeworkId}/>
+  }
+}
+function FetchData({homeworkId}){
+  var query = `?homeworkId=${homeworkId}`
+  var {isLoading, data}=useFetch(`${config.appScript}${query}`)
   if(isLoading){
     return <div className="text-light">Loading...</div>
   } else {
-    data.splice(0,1)
-    return <Gallery data={data}/>
+    return <Gallery data={getData(data)}/>
   }
+}
+function getData(data){
+  var dataArray = data.data
+  dataArray.splice(0,1) 
+  //console.log(dataArray)
+  return dataArray
 }
 
 function Gallery({data}){
-
+  console.log('this is data in Gallery ',data)
   var [activeThumbnail, setActiveThumbnail] = useState(0)
   
   function handlerThumbnailClick(ev){

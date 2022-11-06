@@ -1,20 +1,35 @@
 import SideNav, { SideNavButton } from "./sidenav"
+import config from "./config.json"
+import useFetch from "react-fetch-hook"
+export function Navbar(){
 
-export function Navbar({formUrl}){
-  
-    return <nav className="navbar navbar-expand-lg bg-light">
-  <div className="container-fluid">
-    <a className="navbar-brand" href="#">經濟資料視覺化展示@NTPU.ECON</a>
-    {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon" />
-    </button> */}
- 
-    <SideNavButton/>
-  </div>
-</nav>
-
+  return <nav className="navbar navbar-expand-lg bg-light">
+    <div className="container-fluid">
+      <div className="navbar-brand">
+        <div>經濟資料視覺化展示@NTPU.ECON</div>
+        <div><Dropdown /></div>
+      </div>
+      <SideNavButton />
+    </div>
+  </nav>
 }
 
+function Dropdown(){
+  var { isLoading, data } = useFetch(config.appScript + '?menu=true')
+  if (isLoading) {
+    return <select id="homeworkMenu" className="form-select" aria-label="Default select example">
+      <option selected>Open this select menu</option>
+    </select>
+  } else {
+    let menu = data.menu
+    return <select id="homeworkMenu" className="form-select" aria-label="Default select example">
+      <option selected>Open this select menu</option>
+      {
+        menu ? menu.map((e, i) => { return <option value={e === "homeworkId" ? "Sheet3" : e} key={i}>{e}</option> }) : <></>
+      }
+    </select>
+  }
+}
 function Sidebar(props){
   return  <>
     <div>
