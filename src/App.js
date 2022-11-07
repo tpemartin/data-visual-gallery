@@ -5,7 +5,6 @@ import { Navbar } from './navbar';
 import  useFetch from 'react-fetch-hook';
 import config from "./config.json";
 import { useEffect, useState } from 'react';
-import $ from 'jquery'
 import SideNav from './sidenav';
 
 export default function App() {
