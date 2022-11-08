@@ -1,36 +1,39 @@
 import SideNav, { SideNavButton } from "./sidenav"
 import config from "./config.json"
 import useFetch from "react-fetch-hook"
-export function Navbar(){
+export function Navbar({select}){
 
   return <nav className="navbar navbar-expand-lg bg-light">
     <div className="container-fluid">
       <div className="navbar-brand">
-        <div>經濟資料視覺化展示@NTPU.ECON</div>
+        <div>DataV @ NTPU.ECON</div>
         
       </div>
-      <div><Dropdown /></div>
+      <div><Dropdown select={select}/></div>
       {/* <SideNavButton /> */}
     </div>
   </nav>
 }
 
-function Dropdown(){
+function Dropdown({select}){
   var { data, loading, error } = useFetch(config.appScript + '?menu=true')
   var tag
   if(data){
     let menu = data.menu
     tag = <select id="homeworkMenu" className="form-select" aria-label="Default select example">
-      <option selected value="">選擇展示</option>
-      {
-        menu ? menu.map((e, i) => { return <option value={e === "homeworkId" ? "Sheet3" : e} key={i}>{e}</option> }) : <></>
-      }
+      <Option selected={select===""} value=""/>
+       { menu ? menu.map((e, i) => { return <Option selected={select===e} value={e === "homeworkId" ? "Sheet3" : e} key={i} /> }):<></>}
     </select>
   } else {
     tag = <select id="homeworkMenu" className="form-select" aria-label="Default select example">
     <option selected value="">選擇展示</option>
   </select>
   }
+  return tag
+}
+function Option({selected, value}){
+  let context = (value==="")?"選擇展示":value
+  let tag= (selected)?(<option selected value={value}>{context}</option>):(<option value={value}>{context}</option>)
   return tag
 }
 function Sidebar(props){

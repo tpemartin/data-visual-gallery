@@ -19,7 +19,8 @@ export function Img(props){
 export function Thumbnail(props){
     const chosen = props.chosen?"chosen":""
     const opacity = props.chosen?"":"opacity-25"
-    return <div className={`thumbnail ${chosen}`} style={{backgroundImage: `url(${props.imgSrc})`}} onClick={props.clickHandler}>
+    return <div className={`thumbnail ${chosen}`} style={{backgroundImage: `url(${props.imgSrc})`}}
+     onClick={props.clickHandler} aria-label={props.resizeGraphId}>
         <span className={`position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger ${opacity}`}>
             {props.number}
         </span>

@@ -9,19 +9,21 @@ import SideNav from './sidenav';
 import Markdown from "markdown-to-jsx"
 
 export default function App() {
-  var [homeworkSelect, setHomeworkSelect] = useState("")
+  var [homeworkSelect, setHomeworkSelect] = useState(window.location.hash.replace("#",""))
 
   useEffect(()=>{
-    const selectmenu = document.getElementById("homeworkMenu")
-    selectmenu.onchange=()=>{
-      console.log(selectmenu.value)
-      setHomeworkSelect(selectmenu.value)
-    }
+    window.selectmenu = document.getElementById("homeworkMenu")
+    window.selectmenu.onchange=()=>{
+    console.log(window.selectmenu.value)
+    window.location.hash=window.selectmenu.value
+    setHomeworkSelect(window.selectmenu.value)
+  }
 
   })
+
   return (
     <div className="App">
-      <Navbar/>
+      <Navbar select={homeworkSelect}/>
       {/* <SideNav/> */}
       <Content homeworkId={homeworkSelect}/>
     </div>
@@ -76,9 +78,9 @@ function Gallery({data}){
   var thumbnails = data.map((e, i) => {
     return (i === activeThumbnail) ? (
       <Thumbnail number={i + 1} chosen imgSrc={e.resizeGraphImgSrc} key={i}
-        clickHandler={handlerThumbnailClick} />
+        clickHandler={handlerThumbnailClick} resizeGraphId={e.resizeGraphId}/>
     ) : (
-      <Thumbnail number={i + 1} imgSrc={e.resizeGraphImgSrc} key={i} clickHandler={handlerThumbnailClick} />
+      <Thumbnail number={i + 1} imgSrc={e.resizeGraphImgSrc} key={i} clickHandler={handlerThumbnailClick} resizeGraphId={e.resizeGraphId}/>
     )
   })
 
