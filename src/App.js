@@ -2,10 +2,11 @@ import logo from './logo.svg';
 import './App.css';
 import {Card, Img, Thumbnail, DisplayImg} from './displaycard.js';
 import { Navbar } from './navbar';
-import  useFetch from 'react-fetch-hook';
+import  {useFetch} from 'usehooks-ts';
 import config from "./config.json";
 import { useEffect, useState } from 'react';
 import SideNav from './sidenav';
+import Markdown from "markdown-to-jsx"
 
 export default function App() {
   var [homeworkSelect, setHomeworkSelect] = useState("")
@@ -13,6 +14,7 @@ export default function App() {
   useEffect(()=>{
     const selectmenu = document.getElementById("homeworkMenu")
     selectmenu.onchange=()=>{
+      console.log(selectmenu.value)
       setHomeworkSelect(selectmenu.value)
     }
 
@@ -20,7 +22,7 @@ export default function App() {
   return (
     <div className="App">
       <Navbar/>
-      <SideNav/>
+      {/* <SideNav/> */}
       <Content homeworkId={homeworkSelect}/>
     </div>
   );
@@ -35,16 +37,22 @@ function Content({homeworkId}){
 }
 function FetchData({homeworkId}){
   var query = `?homeworkId=${homeworkId}`
-  var {isLoading, data}=useFetch(`${config.appScript}${query}`)
-  if(isLoading){
-    return <div className="text-light">Loading...</div>
-  } else {
-    return <Gallery data={getData(data)}/>
-  }
+  var url = `${config.appScript}${query}`
+  console.log(url)
+  const { data, loading, error }=useFetch(url)
+  console.log(data)
+  console.log(data?1:0)
+  var tag = (data?(<Gallery data={getData(data)}/>):<div className="text-light">Loading...</div>)
+  // if(loading){
+  //   return <div className="text-light">Loading...</div>
+  // } else {
+  //   console.log(data)
+  //   return <Gallery data={getData(data)}/>
+  // }
+  return tag
 }
 function getData(data){
-  var dataArray = data.data
-  dataArray.splice(0,1) 
+  var dataArray = data.data.filter((e,i)=>i>0)
   //console.log(dataArray)
   return dataArray
 }
@@ -75,7 +83,7 @@ function Gallery({data}){
   })
 
   return <>
-    <DisplayImg number={activeThumbnail + 1} imgSrc={data[activeThumbnail].resizeGraphImgSrc} github={data[activeThumbnail].codePath} />
+    <DisplayImg number={activeThumbnail + 1} imgSrc={data[activeThumbnail].resizeGraphImgSrc} github={data[activeThumbnail].codePath} story={data[activeThumbnail].story}/>
     <div className="thumbnail-footer position-fixed start-0 bottom-0">
       {thumbnails}
     </div>

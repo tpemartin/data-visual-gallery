@@ -1,4 +1,5 @@
 import github from './logo-github-black.svg'
+import Markdown from 'markdown-to-jsx'
 
 export function Card(props){
 
@@ -26,6 +27,9 @@ export function Thumbnail(props){
     </div>
 }
 export function DisplayImg(props){
+    var classNameImage = (props.story && props.story!="")?("col-12 col-md-6 display-img"):("col display-img")
+    var storyTag = (props.story && props.story!="")?(
+        <div className="col-12 col-md-6 story"><Markdown>{props.story}</Markdown> </div>):(<></>)
     return  (
         <div className="text-center display-container">
             <h1><span className="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">
@@ -34,7 +38,14 @@ export function DisplayImg(props){
             <a href={props.github}>
                 <img className="position-absolute top-0 end-0 me-5" src={github} width={24} />
             </a>
-            <div className="display-img" style={{ backgroundImage: `url(${props.imgSrc})` }} />
+
+            <div className="row img-holder">
+                <div className={classNameImage}>
+                    <img src={props.imgSrc} className="img-fluid" alt="..." />
+                </div>
+                {/* <div className={classNameImage} style={{ backgroundImage: `url(${props.imgSrc})` }} /> */}
+                {storyTag}
+            </div>
         </div>
   )
 }

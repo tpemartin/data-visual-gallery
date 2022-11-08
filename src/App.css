@@ -34,7 +34,6 @@ div#offcanvasRight {
   padding: 20px;
 }
 .display-img {
-  height: 70vh;
   background-repeat: no-repeat;
   background-size: contain;
   background-position-x: center;
@@ -49,8 +48,21 @@ div#offcanvasRight {
   align-items: center;
   gap: 10px;
 }
+.row.img-holder {
+  height: 70vh;
+  overflow-y: scroll;
+}
 select.form-select {
   width: 250px;
+}
+.story {
+  color: white;
+}
+.story > div > p {
+  text-align: left;
+}
+strong {
+  color: #dc3545;
 }
 .text-center {
   position: relative;
@@ -77,7 +89,7 @@ select.form-select {
 .thumbnail-footer {
   height: 15vh;
   width: 100%;
-  background-color: #f0f0f020;
+  background-color: #323232b3;
   padding: 11px;
   /* display: flex; */
   display: -webkit-box;

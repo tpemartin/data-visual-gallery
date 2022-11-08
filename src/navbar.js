@@ -7,28 +7,31 @@ export function Navbar(){
     <div className="container-fluid">
       <div className="navbar-brand">
         <div>經濟資料視覺化展示@NTPU.ECON</div>
-        <div><Dropdown /></div>
+        
       </div>
-      <SideNavButton />
+      <div><Dropdown /></div>
+      {/* <SideNavButton /> */}
     </div>
   </nav>
 }
 
 function Dropdown(){
-  var { isLoading, data } = useFetch(config.appScript + '?menu=true')
-  if (isLoading) {
-    return <select id="homeworkMenu" className="form-select" aria-label="Default select example">
-      <option selected>Open this select menu</option>
-    </select>
-  } else {
+  var { data, loading, error } = useFetch(config.appScript + '?menu=true')
+  var tag
+  if(data){
     let menu = data.menu
-    return <select id="homeworkMenu" className="form-select" aria-label="Default select example">
-      <option selected>Open this select menu</option>
+    tag = <select id="homeworkMenu" className="form-select" aria-label="Default select example">
+      <option selected value="">選擇展示</option>
       {
         menu ? menu.map((e, i) => { return <option value={e === "homeworkId" ? "Sheet3" : e} key={i}>{e}</option> }) : <></>
       }
     </select>
+  } else {
+    tag = <select id="homeworkMenu" className="form-select" aria-label="Default select example">
+    <option selected value="">選擇展示</option>
+  </select>
   }
+  return tag
 }
 function Sidebar(props){
   return  <>
