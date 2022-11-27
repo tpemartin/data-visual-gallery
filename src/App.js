@@ -60,6 +60,7 @@ function getData(data){
 }
 
 function Gallery({data}){
+  // if(data.length===0) return <div style={{color: 'white'}}>There is no graph in this category.</div>
   console.log('this is data in Gallery ',data)
   var [activeThumbnail, setActiveThumbnail] = useState(0)
   
@@ -75,20 +76,28 @@ function Gallery({data}){
     //console.log(activeThumbnail)
   }       
 
-  var thumbnails = data.map((e, i) => {
-    return (i === activeThumbnail) ? (
-      <Thumbnail number={i + 1} chosen imgSrc={e.resizeGraphImgSrc} key={i}
-        clickHandler={handlerThumbnailClick} resizeGraphId={e.resizeGraphId}/>
-    ) : (
-      <Thumbnail number={i + 1} imgSrc={e.resizeGraphImgSrc} key={i} clickHandler={handlerThumbnailClick} resizeGraphId={e.resizeGraphId}/>
-    )
-  })
+  if(data.length===0){
+    return <div style={{color: 'white'}}>There is no graph in this category.</div>
+  } else {
+    var thumbnails = data.map((e, i) => {
+      return (i === activeThumbnail) ? (
+        <Thumbnail number={i + 1} chosen imgSrc={e.resizeGraphImgSrc} key={i}
+          clickHandler={handlerThumbnailClick} resizeGraphId={e.resizeGraphId}/>
+      ) : (
+        <Thumbnail number={i + 1} imgSrc={e.resizeGraphImgSrc} key={i} clickHandler={handlerThumbnailClick} resizeGraphId={e.resizeGraphId}/>
+      )
+    })
+  
+    return <>
+      <DisplayImg number={activeThumbnail + 1} 
+      imgSrcOriginal={data[activeThumbnail].graphPath}
+      imgSrc={data[activeThumbnail].resizeGraphImgSrc} github={data[activeThumbnail].codePath} story={data[activeThumbnail].story}/>
+      <div className="thumbnail-footer position-fixed start-0 bottom-0">
+        {thumbnails}
+      </div>
+    </>
 
-  return <>
-    <DisplayImg number={activeThumbnail + 1} imgSrc={data[activeThumbnail].resizeGraphImgSrc} github={data[activeThumbnail].codePath} story={data[activeThumbnail].story}/>
-    <div className="thumbnail-footer position-fixed start-0 bottom-0">
-      {thumbnails}
-    </div>
-  </>
+  }
+  
 
 }

@@ -1,5 +1,6 @@
 import github from './logo-github-black.svg'
 import Markdown from 'markdown-to-jsx'
+import {ImageIcon } from '@primer/octicons-react'
 
 export function Card(props){
 
@@ -36,10 +37,16 @@ export function DisplayImg(props){
             <h1><span className="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">
                 {props.number}
             </span></h1>
-            <a href={props.github}>
-                <img className="position-absolute top-0 end-0 me-5" src={github} width={24} />
+            <div className='position-absolute top-0 end-0 me-5'>
+                <div className="icon-holder">
+            <a href={props.imgSrcOriginal} className="icon-link">
+                <ImageIcon size={16}/>
             </a>
-
+            <a href={props.github}>
+                <img className="" src={github} width={24} />
+            </a>
+            </div>
+            </div>
             <div className="row img-holder">
                 <div className={classNameImage}>
                     <img src={props.imgSrc} className="img-fluid" alt="..." />

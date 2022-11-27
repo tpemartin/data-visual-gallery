@@ -30,6 +30,13 @@ div#offcanvasRight {
 .App-link {
   color: #61dafb;
 }
+a.icon-link {
+  color: black;
+  background: white;
+  height: 24px;
+  width: 24px;
+  border-radius: 24px;
+}
 .display-container {
   padding: 20px;
 }
@@ -37,6 +44,15 @@ div#offcanvasRight {
   background-repeat: no-repeat;
   background-size: contain;
   background-position-x: center;
+}
+.icon-holder {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 .navbar {
   margin-bottom: 30px;
