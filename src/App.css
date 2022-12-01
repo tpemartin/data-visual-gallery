@@ -67,6 +67,7 @@ a.icon-link {
 .row.img-holder {
   height: 70vh;
   overflow-y: scroll;
+  padding-top: 13px;
 }
 select.form-select {
   width: 250px;
@@ -121,4 +122,19 @@ strong {
 }
 body {
   background-color: black !important;
+}
+.badge-holder {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+}
+.pick-holder {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  justify-content: center;
+  align-items: flex-start;
 }

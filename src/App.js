@@ -74,6 +74,7 @@ function Gallery({data}){
     setActiveThumbnail(newActiveThumbnail)
     //const thumbnails = document.getElementsByClassName("thumbnail")
     //console.log(activeThumbnail)
+    console.log(data[activeThumbnail].pick1)
   }       
 
   if(data.length===0){
@@ -87,9 +88,11 @@ function Gallery({data}){
         <Thumbnail number={i + 1} imgSrc={e.resizeGraphImgSrc} key={i} clickHandler={handlerThumbnailClick} resizeGraphId={e.resizeGraphId}/>
       )
     })
-  
+    
     return <>
       <DisplayImg number={activeThumbnail + 1} 
+      teacherPick = {data[activeThumbnail].pick2==="teacher"}
+      studentPick = {data[activeThumbnail].pick1==="students"}
       imgSrcOriginal={data[activeThumbnail].graphPath}
       imgSrc={data[activeThumbnail].resizeGraphImgSrc} github={data[activeThumbnail].codePath} story={data[activeThumbnail].story}/>
       <div className="thumbnail-footer position-fixed start-0 bottom-0">

@@ -34,9 +34,15 @@ export function DisplayImg(props){
         <div className="col-12 col-md-6 story"><Markdown>{props.story}</Markdown> </div>):(<></>)
     return  (
         <div className="text-center display-container">
-            <h1><span className="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">
+            <div className='position-absolute top-0 start-50 translate-middle badge-holder'>
+            <h1><span className="badge rounded-pill bg-danger">
                 {props.number}
             </span></h1>
+            <div className='pick-holder'>
+            {props.teacherPick?<span class="badge bg-warning">Teacher's Pick</span>:<></>}
+            {props.studentPick?<span class="badge bg-primary">Student's Pick</span>:<></>}
+            </div>
+            </div>
             <div className='position-absolute top-0 end-0 me-5'>
                 <div className="icon-holder">
             <a href={props.imgSrcOriginal} className="icon-link">
