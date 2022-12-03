@@ -14,7 +14,7 @@
       <mj-column>
         <mj-image width="64px" src="https://raw.githubusercontent.com/emajortaiwan/logos/main/dvprogress/no-border/apple-touch-icon.png"></mj-image>
     <mj-text>
-      week11
+      <?=weekname?>
       </mj-text>
     
         <mj-divider border-color="#F45E43"></mj-divider>
@@ -25,7 +25,7 @@
   <mj-text>
   作品
   </mj-text>
-          <mj-image width="64px" src="https://github.com/tpemartin/data-visual-gallery/raw/main/graphs/graph-1YZ30m2uIlDmBnWXftE5RYoPuraDMUJv7.png"></mj-image>
+          <mj-image width="64px" src="<?=imgSrc?>"></mj-image>
         <mj-table>
           <tr style="border-bottom:1px solid #ecedee;text-align:left;padding:15px 0;">
             <th style="padding: 0 15px 0 0;">項目</th>
@@ -35,22 +35,22 @@
           <tr>
             <td style="padding: 0 15px 0 0;">同學互評</td>
             
-            <td style="padding: 0 0 0 15px;">4.31</td>
+            <td style="padding: 0 0 0 15px;"><?=grade?></td>
           </tr>
           <tr>
             <td style="padding: 0 15px 0 0;">主(副)標題,資料來源</td>
             
-            <td style="padding: 0 0 0 15px;">3</td>
+            <td style="padding: 0 0 0 15px;"><?=rubric1?></td>
           </tr>
           <tr>
             <td style="padding: 0 15px 0 0;">故事性設計</td>
             
-            <td style="padding: 0 0 0 15px;">2</td>
+            <td style="padding: 0 0 0 15px;"><?=rubric2?></td>
           </tr>
           <tr style="border-top:2px solid #ecedee;text-align:left;padding:15px 0;">
             <th style="padding: 0 15px 0 0;">總分</th>
             
-            <th style="padding: 0 0 0 15px;">9.31</th>
+            <th style="padding: 0 0 0 15px;"><?=totalGrade?></th>
           </tr>
         </mj-table>
       </mj-column>
