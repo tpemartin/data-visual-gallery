@@ -1,0 +1,68 @@
+<mjml>
+
+  <mj-head>
+
+    <mj-attributes>
+      <mj-text align="center" color="#555" />
+      <mj-section background-color="#fff" />
+    </mj-attributes>
+
+  </mj-head>
+
+  <mj-body background-color="#eee" width="300px">
+<mj-section>
+      <mj-column>
+        <mj-image width="64px" src="https://raw.githubusercontent.com/emajortaiwan/logos/main/dvprogress/no-border/apple-touch-icon.png"></mj-image>
+    <mj-text>
+      week11
+      </mj-text>
+    
+        <mj-divider border-color="#F45E43"></mj-divider>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+<mj-column>
+  <mj-text>
+  作品
+  </mj-text>
+          <mj-image width="64px" src="https://drive.google.com/uc?export=view&id=1YZ30m2uIlDmBnWXftE5RYoPuraDMUJv7"></mj-image>
+        <mj-table>
+          <tr style="border-bottom:1px solid #ecedee;text-align:left;padding:15px 0;">
+            <th style="padding: 0 15px 0 0;">項目</th>
+            
+            <th style="padding: 0 0 0 15px;">得分</th>
+          </tr>
+          <tr>
+            <td style="padding: 0 15px 0 0;">同學互評</td>
+            
+            <td style="padding: 0 0 0 15px;">4.31</td>
+          </tr>
+          <tr>
+            <td style="padding: 0 15px 0 0;">主(副)標題,資料來源</td>
+            
+            <td style="padding: 0 0 0 15px;">3</td>
+          </tr>
+          <tr>
+            <td style="padding: 0 15px 0 0;">故事性設計</td>
+            
+            <td style="padding: 0 0 0 15px;">2</td>
+          </tr>
+          <tr style="border-top:2px solid #ecedee;text-align:left;padding:15px 0;">
+            <th style="padding: 0 15px 0 0;">總分</th>
+            
+            <th style="padding: 0 0 0 15px;">9.31</th>
+          </tr>
+        </mj-table>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-button font-family="Helvetica" background-color="#f45e43" color="white"
+                   href="mailto:mtlin@gm.ntpu.edu.tw">
+          Email Teacher
+        </mj-button>
+      </mj-column>
+    </mj-section>
+    
+  </mj-body>
+</mjml>
