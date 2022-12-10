@@ -1,0 +1,79 @@
+<mjml>
+
+  <mj-head>
+
+    <mj-attributes>
+      <mj-text align="center" color="#555" />
+      <mj-section background-color="#fff" />
+    </mj-attributes>
+
+  </mj-head>
+
+  <mj-body background-color="#eee" width="300px">
+<mj-section>
+      <mj-column>
+        <mj-image width="64px" src="https://raw.githubusercontent.com/emajortaiwan/logos/main/dvprogress/no-border/apple-touch-icon.png"></mj-image>
+    
+    
+        <mj-divider border-color="#F45E43"></mj-divider>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+<mj-column>
+  <mj-text>
+  Midterm
+  </mj-text>
+        
+        <mj-table>
+          <tr style="border-bottom:1px solid #ecedee;text-align:left;padding:15px 0;">
+            <th style="padding: 0 15px 0 0;">Item</th>
+            
+            <th style="padding: 0 0 0 15px;">score</th>
+          </tr>
+          <tr>
+            <td style="padding: 0 15px 0 0;">Mutiple Choice</td>
+            
+            <td style="padding: 0 0 0 15px;"><?=MCQ?></td>
+          </tr>
+          <tr>
+            <td style="padding: 0 15px 0 0;">Programming</td>
+            
+            <td style="padding: 0 0 0 15px;"></td>
+          </tr>
+          <tr>
+            <td style="padding: 0 15px 0 0;">ans11</td>
+            
+            <td style="padding: 0 0 0 15px;"><?=ans11?></td>
+          </tr>
+          <tr>
+            <td style="padding: 0 15px 0 0;">ans12</td>
+            
+            <td style="padding: 0 0 0 15px;"><?=ans12?></td>
+          </tr>          <tr>
+            <td style="padding: 0 15px 0 0;">ans13</td>
+            
+            <td style="padding: 0 0 0 15px;"><?=ans13?></td>
+          </tr>          <tr style="border-top:2px solid #ecedee;text-align:left;padding:15px 0;">
+            <th style="padding: 0 15px 0 0;">Total</th>
+            
+            <th style="padding: 0 0 0 15px;"><?=total?></th>
+          </tr>
+           <tr style="border-top:2px solid #ecedee;text-align:left;padding:15px 0;">
+            <th style="padding: 0 15px 0 0;">PR</th>
+            
+            <th style="padding: 0 0 0 15px;"><?=pr?>%</th>
+          </tr>
+        </mj-table>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-button font-family="Helvetica" background-color="#f45e43" color="white"
+                   href="mailto:mtlin@gm.ntpu.edu.tw">
+          Email Teacher
+        </mj-button>
+      </mj-column>
+    </mj-section>
+    
+  </mj-body>
+</mjml>
