@@ -1,6 +1,6 @@
 {
   "name": "data-visual-gallery",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://tpemartin.github.io/data-visual-gallery",
   "private": true,
   "dependencies": {
